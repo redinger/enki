@@ -11,6 +11,16 @@
   <%= javascript_include_tag 'jquery' %>
   <%= open_id_delegation_link_tags(h(config[:open_id_delegation, :server]), h(config[:open_id_delegation, :delegate])) if config[:open_id_delegation] %>
   <%= yield(:head) %>
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    try{
+      var pageTracker = _gat._getTracker("UA-7372326-1");
+      pageTracker._trackPageview();
+      } catch(err) {}
+  </script>
 </head>
 <body>
   <div id="page_container">
