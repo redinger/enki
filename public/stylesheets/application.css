@@ -37,6 +37,11 @@ body
   border-bottom: solid 1px #aaaaaa;
 }
 
+#powered_by
+{
+	text-align: right;
+}
+
 /* Headings */
 h1#page_heading
 {
