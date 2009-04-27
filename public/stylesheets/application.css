@@ -110,6 +110,10 @@ img
   border: solid 1px black;
 }
 
+.no-border
+{
+	border: none;
+}
 /* Two columns */
 #navigation 
 {
@@ -177,7 +181,7 @@ img
   padding-right: 150px;
   padding-left: 0px;
   padding-top: 15px;
-  padding-bottom: 40px;
+  padding-bottom: 100px;
 }
 
 div.meta
