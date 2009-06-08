@@ -5,6 +5,7 @@
 <% content_for(:page_title) do -%>
 <%=h post_title(@post) -%>
 <% end -%>
+<% if flash[:notice] %><p><%= flash[:notice] %></p><% end %>
 <%= render :partial => 'posts/post', :locals => {:post => @post} %>
 <ol class="commentlist">
   <% @post.approved_comments.each do |comment| -%>

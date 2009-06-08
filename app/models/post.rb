@@ -3,8 +3,10 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
+  acts_as_defensio_article :fields => {:content => :body_html, :permalink => :slug}
+
   has_many                :comments, :dependent => :destroy
-  has_many                :approved_comments, :class_name => 'Comment'
+  has_many                :approved_comments, :class_name => 'Comment', :conditions => {:spam => false}
 
   before_validation       :generate_slug
   before_validation       :set_dates
@@ -19,6 +21,15 @@ class Post < ActiveRecord::Base
   end
 
   attr_accessor :minor_edit
+  
+  def author
+    "Christopher Redinger"
+  end
+  
+  def author_email
+    "info@agiledisciple.com"
+  end
+
   def minor_edit
     @minor_edit ||= "1"
   end

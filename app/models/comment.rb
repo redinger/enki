@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   attr_accessor         :openid_error
   attr_accessor         :openid_valid
 
+  acts_as_defensio_comment :fields => {:content => :body, :article => :post}
+
   belongs_to            :post
 
   before_save           :apply_filter

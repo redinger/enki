@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new((session[:pending_comment] || params[:comment] || {}).reject {|key, value| !Comment.protected_attribute?(key) })
     @comment.post = @post
-
+    @comment.env = request.env
     session[:pending_comment] = nil
 
     unless @comment.requires_openid_authentication?
@@ -52,6 +52,11 @@ class CommentsController < ApplicationController
     end
 
     if session[:pending_comment].nil? && @comment.save
+      if @comment.spam
+        flash[:notice] = 'Your comment has been marked for review'
+      else
+        flash[:notice] = 'Comment created'
+      end
       redirect_to post_path(@post)
     else
       render :template => 'posts/show'

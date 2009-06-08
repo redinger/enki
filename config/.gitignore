@@ -1,7 +1,3 @@
 database.yml
 defensio.yml
-<<<<<<< HEAD:config/.gitignore
 newrelic.yml
-=======
-newrelic.yml
->>>>>>> 5e29f7f21b667ccc8f30e0e679fbe8f4033f38d5:config/.gitignore
