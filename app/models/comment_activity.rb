@@ -6,7 +6,7 @@ class CommentActivity
   end
 
   def comments
-    @comments ||= post.approved_comments.find_recent(:limit => 5)
+    @comments ||= post.comments.find_recent(:limit => 5)
   end
 
   def most_recent_comment
@@ -23,9 +23,7 @@ class CommentActivity
       ).collect {|post|
         CommentActivity.new(post)
       }.sort_by {|activity|
-        activity.comments.any? ?
-          activity.most_recent_comment.created_at :
-          activity.post.created_at
+        activity.most_recent_comment.created_at
       }.reverse
     end
   end
